@@ -1,0 +1,9 @@
+{
+    "name": "Supermarket_Calculator_for_optimal_Price",
+    "version_number": "1.0.0",
+    "website_url": "https://github.com/thunderstore-io",
+    "description": "This project features a simple web calculator designed to help users determine optimal supermarket prices. It doubles the market price and subtracts 0.01 to keep prices competitive, streamlining price calculations for players.",
+    "dependencies": [
+        "bbepis-BepInExPack-5.4.2120"
+    ]
+}

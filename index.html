@@ -2,32 +2,38 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Neon Calculator</title>
+  <title>Supermarket Calculator</title>
   <style>
     body {
       margin: 0;
       padding: 0;
-      height: 100vh;
+      min-height: 100vh;
       display: flex;
-      justify-content: center;
-      align-items: center;
-      background-color: #0d0d0d; /* Dark background */
+      flex-direction: column;
+      justify-content: space-between;
+      background-color: #0d0d0d;
       font-family: 'Arial', sans-serif;
     }
 
+    main {
+      flex: 1;
+    }
+
     .container {
-      text-align: center;
+      max-width: 400px;
+      margin: 50px auto;
       padding: 40px;
       border-radius: 15px;
-      background-color: #1a1a1a; /* Slightly lighter container */
-      box-shadow: 0 0 20px #0ff, 0 0 40px #0ff inset; /* Neon glow effect */
+      background-color: #1a1a1a;
+      box-shadow: 0 0 20px #0ff, 0 0 40px #0ff inset;
+      text-align: center;
     }
 
     h2 {
-      color: #0ff; /* Neon cyan */
+      color: #0ff;
       font-size: 2em;
       margin-bottom: 20px;
-      text-shadow: 0 0 10px #0ff, 0 0 20px #0ff; /* Glowing text */
+      text-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
     }
 
     label {
@@ -78,37 +84,51 @@
       color: #0ff;
       text-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
     }
+
+    footer {
+      text-align: center;
+      padding: 10px;
+      font-family: Arial, sans-serif;
+      font-size: 0.9em;
+      color: #888;
+      background-color: transparent;
+    }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h2>Supermarket Calculator</h2>
-    <label for="numberInput">Number (with decimal point):</label>
-    <input type="text" id="numberInput" placeholder="e.g., 3.09" />
-    <br />
-    <button onclick="calculate()">Calculate</button>
-    <div id="result"></div>
-  </div>
+  <main>
+    <div class="container">
+      <h2>Supermarket Calculator</h2>
+      <label for="numberInput">Number (with decimal point):</label>
+      <input type="text" id="numberInput" placeholder="e.g., 3.09" />
+      <br />
+      <button onclick="calculate()">Calculate</button>
+      <div id="result"></div>
+    </div>
+  </main>
 
-  <script>
-    function calculate() {
-      let input = document.getElementById('numberInput').value.trim();
-      input = input.replace(',', '.'); // Replace comma with dot
-      let number = parseFloat(input);
-      if (isNaN(number)) {
-        document.getElementById('result').textContent = "Please enter a valid number.";
-        return;
-      }
-      let resultValue = (number * 2) - 0.01;
-      document.getElementById('result').textContent = `Result: ${resultValue.toFixed(2)}`;
+  <!-- Footer ganz unten -->
+  <footer>
+    <p>&copy; 2025 DarkTremor | Created on 07/10/2025</p>
+  </footer>
+
+<script>
+  function calculate() {
+    let input = document.getElementById('numberInput').value.trim();
+    input = input.replace(',', '.'); // Komma durch Punkt ersetzen
+    let number = parseFloat(input);
+    if (isNaN(number)) {
+      document.getElementById('result').textContent = "Please enter a valid number.";
+      return;
     }
+    let resultValue = (number * 2) - 0.01;
+    document.getElementById('result').textContent = `Result: ${resultValue.toFixed(2)}`;
+  }
 
-    // Allow pressing Enter to trigger calculation
-    document.getElementById('numberInput').addEventListener('keydown', function(event) {
-      if (event.key === 'Enter') {
-        calculate();
-      }
-    });
-  </script>
-</body>
-</html>
+  // Press Enter to trigger calculation
+  document.getElementById('numberInput').addEventListener('keydown', function(event) {
+    if (event.key === 'Enter') {
+      calculate();
+    }
+  });
+</script>
