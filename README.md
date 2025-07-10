@@ -20,8 +20,6 @@ The primary goal is to help sellers quickly estimate a balanced price point, sim
 ## Technologies Used
 
 - HTML
-- CSS (for styling)
-- JavaScript
 
 ## License
 
