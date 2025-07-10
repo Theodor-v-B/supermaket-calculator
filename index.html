@@ -107,7 +107,6 @@
     </div>
   </main>
 
-  <!-- Footer ganz unten -->
   <footer>
     <p>&copy; 2025 DarkTremor | Created on 07/10/2025</p>
   </footer>
@@ -115,7 +114,7 @@
 <script>
   function calculate() {
     let input = document.getElementById('numberInput').value.trim();
-    input = input.replace(',', '.'); // Komma durch Punkt ersetzen
+    input = input.replace(',', '.'); // replace . with ,
     let number = parseFloat(input);
     if (isNaN(number)) {
       document.getElementById('result').textContent = "Please enter a valid number.";
