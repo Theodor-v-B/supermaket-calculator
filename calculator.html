@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <title>Calculator</title>
+</head>
+<body>
+  <h2>Dein Calculator</h2>
+  <label for="zahlInput">Zahl (mit Dezimalstelle): </label>
+  <input type="text" id="zahlInput" placeholder="z.B. 3,09" />
+  <button onclick="berechne()">Berechnen</button>
+  <p id="ergebnis"></p>
+
+  <script>
+    function berechne() {
+      let eingabe = document.getElementById('zahlInput').value.trim();
+      
+      // Komma durch Punkt ersetzen für richtige Dezimalzahl
+      eingabe = eingabe.replace(',', '.');
+
+      // In Zahl umwandeln
+      let zahl = parseFloat(eingabe);
+
+      if (isNaN(zahl)) {
+        document.getElementById('ergebnis').textContent = "Bitte eine gültige Zahl eingeben.";
+        return;
+      }
+
+      // Berechnung: (Zahl * 2) - 0.01
+      let ergebnis = (zahl * 2) - 0.01;
+
+      // Ergebnis anzeigen, auf 2 Dezimalstellen
+      document.getElementById('ergebnis').textContent = `Ergebnis: ${ergebnis.toFixed(2)}`;
+    }
+  </script>
+</body>
+</html>

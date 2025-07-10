@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Neon Calculator</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #0d0d0d; /* Dark background */
+      font-family: 'Arial', sans-serif;
+    }
+
+    .container {
+      text-align: center;
+      padding: 40px;
+      border-radius: 15px;
+      background-color: #1a1a1a; /* Slightly lighter container */
+      box-shadow: 0 0 20px #0ff, 0 0 40px #0ff inset; /* Neon glow effect */
+    }
+
+    h2 {
+      color: #0ff; /* Neon cyan */
+      font-size: 2em;
+      margin-bottom: 20px;
+      text-shadow: 0 0 10px #0ff, 0 0 20px #0ff; /* Glowing text */
+    }
+
+    label {
+      display: block;
+      margin-bottom: 10px;
+      color: #fff;
+      font-size: 1.2em;
+    }
+
+    input[type="text"] {
+      width: 200px;
+      padding: 10px;
+      font-size: 1.2em;
+      border: none;
+      border-radius: 8px;
+      outline: none;
+      background-color: #222;
+      color: #0ff;
+      box-shadow: 0 0 10px #0ff, inset 0 0 10px #0ff;
+      transition: box-shadow 0.3s;
+    }
+
+    input[type="text"]:focus {
+      box-shadow: 0 0 20px #0ff, inset 0 0 15px #0ff;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 12px 25px;
+      font-size: 1.2em;
+      border: none;
+      border-radius: 8px;
+      background-color: #0ff;
+      color: #000;
+      cursor: pointer;
+      box-shadow: 0 0 15px #0ff, inset 0 0 10px #0ff;
+      transition: box-shadow 0.3s, background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #00cccc;
+      box-shadow: 0 0 20px #0ff, inset 0 0 15px #0ff;
+    }
+
+    #result {
+      margin-top: 25px;
+      font-size: 1.5em;
+      color: #0ff;
+      text-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Supermarket Calculator</h2>
+    <label for="numberInput">Number (with decimal point):</label>
+    <input type="text" id="numberInput" placeholder="e.g., 3.09" />
+    <br />
+    <button onclick="calculate()">Calculate</button>
+    <div id="result"></div>
+  </div>
+
+  <script>
+    function calculate() {
+      let input = document.getElementById('numberInput').value.trim();
+      input = input.replace(',', '.'); // Replace comma with dot
+      let number = parseFloat(input);
+      if (isNaN(number)) {
+        document.getElementById('result').textContent = "Please enter a valid number.";
+        return;
+      }
+      let resultValue = (number * 2) - 0.01;
+      document.getElementById('result').textContent = `Result: ${resultValue.toFixed(2)}`;
+    }
+
+    // Allow pressing Enter to trigger calculation
+    document.getElementById('numberInput').addEventListener('keydown', function(event) {
+      if (event.key === 'Enter') {
+        calculate();
+      }
+    });
+  </script>
+</body>
+</html>
